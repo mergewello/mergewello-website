@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Mergewello additions
+.env
+.env.local
+.env.*.local
+.DS_Store
+Thumbs.db
