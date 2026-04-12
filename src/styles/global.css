@@ -1,10 +1,33 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;800&display=swap");
+
+/* ── Brand Tokens ──────────────────────────────── */
+
+@theme {
+  --color-brand-primary: #15CEAE;
+  --color-brand-primary-dark: #04E3BE;
+  --color-brand-dark: #0E1017;
+  --color-brand-accent: #FFB830;
+  --color-brand-light: #FFF0F0;
+  --color-brand-card: #171923;
+  --color-brand-badge: #209F76;
+
+  --font-heading: "Bricolage Grotesque", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+}
+
+/* ── Base Styles ───────────────────────────────── */
 
 @layer base {
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-brand-dark);
+    color: white;
   }
 }

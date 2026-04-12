@@ -1,0 +1,25 @@
+---
+interface Props {
+  text: string;
+  href?: string;
+  size?: "sm" | "md" | "lg";
+}
+
+const {
+  text,
+  href = "#contact",
+  size = "md",
+} = Astro.props;
+
+const sizeMap: Record<string, string> = {
+  sm: "px-5 py-2 text-sm",
+  md: "px-7 py-3 text-base",
+  lg: "px-8 py-4 text-lg",
+};
+
+const classes = `inline-block bg-gradient-to-br from-brand-primary to-emerald-600 text-white font-medium font-body uppercase tracking-wide rounded-[20px] text-center transition-transform duration-200 hover:scale-105 hover:shadow-lg hover:shadow-brand-primary/20 ${sizeMap[size]}`;
+---
+
+<a href={href} class={classes}>
+  {text}
+</a>

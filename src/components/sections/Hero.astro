@@ -1,0 +1,64 @@
+---
+import Button from "../ui/Button.astro";
+
+const features = [
+  "Works great on mobile",
+  "SEO-ready",
+  "Fast 14-day delivery",
+  "Dedicated local support",
+];
+---
+
+<section id="hero" class="relative bg-brand-dark overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 py-8 lg:py-24">
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+
+      <!-- Left Content -->
+      <div class="flex-1 lg:pl-8">
+        <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-semibold text-brand-primary leading-tight mb-6">
+          Website +<br />Digital Solutions
+        </h1>
+
+        <p class="text-base sm:text-lg lg:text-xl font-body font-medium text-white/90 max-w-xl mb-8 leading-relaxed">
+          We help local businesses in
+          <span class="font-semibold text-white">Aklan, Antique, Capiz, and Iloilo</span>
+          get online. Turning your ideas into a real, working website that brings in more customers, fast and affordable.
+        </p>
+
+        <div class="mb-10">
+          <Button text="GET A QUOTE" href="#contact" size="lg" />
+        </div>
+
+        <!-- Feature Checks -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-3">
+          {features.map((feature) => (
+            <div class="flex items-center gap-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 text-brand-primary shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-white/80 text-sm lg:text-base font-body font-light">{feature}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right Image -->
+      <div class="flex-1 flex justify-center lg:justify-end">
+        <img
+          src="/src/assets/images/rocket.png"
+          alt="Rocket launching — fast website delivery"
+          class="w-64 sm:w-72 lg:w-[380px] xl:w-[420px] h-auto object-contain"
+          loading="eager"
+        />
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,196 @@
+---
+const plans = [
+  {
+    id: "starter",
+    badge: "STARTER",
+    name: "The Starter",
+    description: "For small businesses starting their online presence.",
+    price: "₱3,000",
+    priceNote: "one-time payment",
+    highlight: null,
+    popular: false,
+    features: [
+      "Up to 3-page website",
+      "Mobile-responsive design",
+      "Contact form integration",
+      "Fast-loading website",
+      "Free hosting setup",
+      "Clean & modern design",
+      "SEO-friendly structure",
+      "15 days support after launch",
+    ],
+  },
+  {
+    id: "growth",
+    badge: "GROWTH",
+    name: "The Growth",
+    description: "For businesses that want a professional website without a high upfront cost.",
+    price: "₱5,000",
+    priceLabel: "upfront",
+    priceSecondary: "₱2,000/",
+    priceSecondaryLabel: "month for 6 months",
+    priceNote: null,
+    highlight: "Website fully turned over after completion",
+    popular: true,
+    features: [
+      "Up to 5-page website",
+      "Custom design + mobile optimized",
+      "Fast-loading & performance optimized",
+      "Contact & inquiry forms",
+      "SEO setup",
+      "CMS – Easy content editing",
+      "FREE 1-year domain",
+      "FREE 1-year hosting with SSL",
+      "Conversion-focused layout",
+      "30 days support after launch",
+    ],
+  },
+  {
+    id: "full-launch",
+    badge: "FULL LAUNCH",
+    name: "The Full Launch",
+    description: "Everything you need for a complete online presence.",
+    price: "₱12,000",
+    priceNote: null,
+    highlight: "Full ownership upon delivery",
+    popular: false,
+    features: [
+      "Up to 8-page website",
+      "Custom design + mobile optimized",
+      "Fast-loading & performance optimized",
+      "Contact & inquiry forms",
+      "SEO setup",
+      "CMS – Easy content editing",
+      "FREE 1-year domain",
+      "FREE 1-year hosting with SSL",
+      "Conversion-focused layout",
+      "30 days support after launch",
+    ],
+  },
+];
+---
+
+<section id="pricing" class="bg-brand-dark py-16 lg:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
+
+    <!-- Header -->
+    <div class="text-center mb-12 lg:mb-16">
+      <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-semibold text-brand-primary mb-4">
+        Popular Packages
+      </h2>
+      <p class="font-body text-base sm:text-lg lg:text-xl font-medium text-white">
+        Select the perfect website plan for your business.
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start">
+      {plans.map((plan) => (
+        <a
+          href="#contact"
+          class:list={[
+            "relative block bg-brand-card rounded-2xl p-6 lg:p-8 transition-all duration-300 cursor-pointer hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-primary/10 group",
+            plan.popular
+              ? "outline-3 outline-brand-primary"
+              : "outline-1 outline-white/30 hover:outline-brand-primary/50",
+          ]}
+        >
+          {/* Most Popular Badge */}
+          {plan.popular && (
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+              <span class="bg-brand-badge text-white text-sm lg:text-base font-medium font-body px-5 py-1.5 rounded-xl whitespace-nowrap">
+                Most Popular
+              </span>
+            </div>
+          )}
+
+          {/* Plan Badge */}
+          <span class="inline-block bg-brand-badge text-white text-sm font-medium font-heading px-4 py-1.5 rounded-xl mb-4">
+            {plan.badge}
+          </span>
+
+          {/* Plan Name */}
+          <h3 class="font-heading text-2xl lg:text-3xl font-semibold text-white mb-2">
+            {plan.name}
+          </h3>
+
+          {/* Description */}
+          <p class="font-body text-sm lg:text-base font-medium text-brand-light/80 mb-5">
+            {plan.description}
+          </p>
+
+          {/* Divider */}
+          <div class="border-t border-white/20 mb-5"></div>
+
+          {/* Price */}
+          <div class="mb-1">
+            <span class="font-heading text-2xl lg:text-3xl font-medium text-white">
+              {plan.price}
+            </span>
+            {plan.priceLabel && (
+              <span class="font-heading text-sm lg:text-base font-medium text-white ml-1">
+                {plan.priceLabel}
+              </span>
+            )}
+          </div>
+
+          {/* Secondary Price (Growth only) */}
+          {plan.priceSecondary && (
+            <div class="mb-1">
+              <span class="font-heading text-2xl lg:text-3xl font-medium text-white">
+                {plan.priceSecondary}
+              </span>
+              <span class="font-heading text-sm lg:text-base font-medium text-white">
+                {plan.priceSecondaryLabel}
+              </span>
+            </div>
+          )}
+
+          {/* Price Note */}
+          {plan.priceNote && (
+            <p class="font-heading text-sm lg:text-base font-medium text-white mb-4">
+              {plan.priceNote}
+            </p>
+          )}
+
+          {/* Highlight Note */}
+          {plan.highlight && (
+            <div class="flex items-center gap-2 mb-4 mt-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 text-brand-primary shrink-0"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span class="font-heading text-sm lg:text-base font-medium text-brand-primary">
+                {plan.highlight}
+              </span>
+            </div>
+          )}
+
+          {/* What's Included */}
+          <p class="font-body text-sm lg:text-base font-medium text-brand-light/70 uppercase tracking-wide mb-3 mt-4">
+            WHAT'S INCLUDED
+          </p>
+
+          {/* Features List */}
+          <ul class="space-y-2">
+            {plan.features.map((feature) => (
+              <li class="flex items-start gap-2.5">
+                <span class="text-white/60 mt-1.5 text-xs">•</span>
+                <span class="font-body text-sm lg:text-base font-medium text-white">
+                  {feature}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</section>

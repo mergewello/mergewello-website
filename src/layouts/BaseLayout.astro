@@ -1,12 +1,15 @@
 ---
+import "../styles/global.css";
 interface Props {
   title: string;
   description?: string;
+  currentPage?: string;
 }
 
 const {
   title,
-  description = "Built by Mergewello Technologies"
+  description = "We help local businesses in Aklan, Antique, Capiz, and Iloilo get online.",
+  currentPage = "",
 } = Astro.props;
 ---
 
@@ -18,9 +21,9 @@ const {
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title}</title>
+    <title>{title} | Mergewello Technologies</title>
   </head>
-  <body class="min-h-screen bg-white text-gray-900 antialiased">
+  <body class="min-h-screen antialiased">
     <slot />
   </body>
 </html>
