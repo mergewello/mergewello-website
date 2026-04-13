@@ -1,5 +1,6 @@
 ---
 import Button from "../ui/Button.astro";
+import rocketImg from "../../assets/images/rocket.png";
 
 const features = [
   "Works great on mobile",
@@ -52,7 +53,7 @@ const features = [
       <!-- Right Image -->
       <div class="hidden lg:flex flex-1 justify-end">
         <img
-          src="/src/assets/images/rocket.png"
+          src={rocketImg.src}
           alt="Rocket launching — fast website delivery"
           class="w-64 sm:w-72 lg:w-95 xl:w-105 h-auto object-contain"
           loading="eager"
