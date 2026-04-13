@@ -1,0 +1,112 @@
+---
+const pageLinks = [
+  { label: "Home", href: "#" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Get to know us", href: "/about" },
+  { label: "Get a Quote", href: "/#contact" },
+];
+
+const supportLinks = [
+    { label: "Help Center", href: "#" },
+  { label: "Contact", href: "/#contact" },
+  { label: "Privacy Policy", href: "#" },
+
+];
+
+const socialLinks = [
+  { label: "Facebook", href: "#", icon: "/icons/facebook.svg" },
+  { label: "LinkedIn", href: "#", icon: "/icons/linkedin.svg" },
+  { label: "TikTok", href: "#", icon: "/icons/tiktok.svg" },
+  { label: "Instagram", href: "#", icon: "/icons/instagram.svg" },
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-brand-accent">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 pt-10 lg:pt-14 pb-6">
+
+    <!-- Main Footer Content -->
+    <div class="flex flex-col lg:flex-row gap-10 lg:gap-16 mb-10">
+
+      <!-- Logo -->
+      <div class="shrink-0">
+        <a href="/" class="inline-flex flex-col">
+          <div class="font-heading text-3xl lg:text-4xl font-bold leading-tight">
+            <span class="text-black">merge</span><span class="text-teal-700">wello</span>
+          </div>
+          <span class="text-black text-xs font-medium font-body tracking-[0.15em]">TECHNOLOGIES</span>
+        </a>
+      </div>
+
+      <!-- Link Columns -->
+      <div class="flex-1 grid grid-cols-2 sm:grid-cols-3 gap-8 lg:gap-12">
+
+        <!-- Pages -->
+        <div class="flex flex-col gap-2">
+          <h4 class="font-body text-sm font-semibold text-stone-800 mb-1">Pages</h4>
+          {pageLinks.map((link) => (
+            <a
+              href={link.href}
+              class="font-body text-sm font-medium text-stone-900/60 hover:text-black transition-colors duration-200"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+
+        <!-- Support -->
+        <div class="flex flex-col gap-2">
+          <h4 class="font-body text-sm font-semibold text-stone-800 mb-1">Support</h4>
+          {supportLinks.map((link) => (
+            <a
+              href={link.href}
+              class="font-body text-sm font-medium text-stone-900/60 hover:text-black transition-colors duration-200"
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+
+        <!-- Follow Us -->
+        <div class="flex flex-col gap-2">
+          <h4 class="font-body text-sm font-semibold text-stone-800 mb-1">Follow Us</h4>
+          {socialLinks.map((social) => (
+            <a
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-body text-sm font-medium text-stone-900/60 hover:text-black transition-colors duration-200"
+            >
+              {social.label}
+            </a>
+          ))}
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Social Icons -->
+    <div class="lg:hidden flex items-center justify-center gap-4 mb-8">
+      {socialLinks.map((social) => (
+        <a
+          href={social.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={social.label}
+          class="w-10 h-10 flex items-center justify-center bg-black/10 rounded-full hover:bg-black/20 transition-colors duration-200"
+        >
+          <img src={social.icon} alt={social.label} class="w-5 h-5" />
+        </a>
+      ))}
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-black/10 pt-5">
+      <p class="font-body text-xs sm:text-sm font-medium text-black text-center">
+        &trade; {currentYear} All Rights Reserved by Mergewello Technologies.
+      </p>
+    </div>
+
+  </div>
+</footer>
