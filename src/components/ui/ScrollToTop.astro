@@ -1,0 +1,88 @@
+---
+
+---
+
+<button
+  id="scroll-to-top"
+  aria-label="Scroll to top"
+  class="fixed bottom-24 lg:bottom-8 right-4 lg:right-8 z-50 w-12 h-12 flex items-center justify-center cursor-pointer opacity-0 translate-y-4 pointer-events-none transition-all duration-300"
+>
+  <!-- SVG Circle Progress + Arrow -->
+  <svg class="w-12 h-12 -rotate-90" viewBox="0 0 48 48">
+    <!-- Background circle -->
+    <circle
+      cx="24"
+      cy="24"
+      r="20"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      class="text-white/10"
+    />
+    <!-- Progress circle -->
+    <circle
+      id="scroll-progress"
+      cx="24"
+      cy="24"
+      r="20"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      class="text-brand-primary"
+      style="stroke-dasharray: 125.66; stroke-dashoffset: 125.66;"
+    />
+  </svg>
+
+  <!-- Arrow icon (centered on top of SVG) -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-5 h-5 text-brand-primary absolute"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    stroke-width="2"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m0 0l-7 7m7-7l7 7" />
+  </svg>
+</button>
+
+<script>
+  const btn = document.getElementById("scroll-to-top") as HTMLButtonElement;
+  const progress = document.getElementById("scroll-progress") as unknown as SVGCircleElement;
+
+  const circumference = 2 * Math.PI * 20; // r=20, so ~125.66
+  let ticking = false;
+
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
+
+    // Update circle fill
+    const offset = circumference - (scrollPercent * circumference);
+    progress.style.strokeDashoffset = `${offset}`;
+
+    // Show/hide button
+    if (scrollTop > 300) {
+      btn.classList.remove("opacity-0", "translate-y-4", "pointer-events-none");
+      btn.classList.add("opacity-100", "translate-y-0", "pointer-events-auto");
+    } else {
+      btn.classList.remove("opacity-100", "translate-y-0", "pointer-events-auto");
+      btn.classList.add("opacity-0", "translate-y-4", "pointer-events-none");
+    }
+
+    ticking = false;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(updateProgress);
+      ticking = true;
+    }
+  });
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>

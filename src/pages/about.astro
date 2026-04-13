@@ -2,19 +2,19 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Navbar from "../components/sections/Navbar.astro";
 import SocialSidebar from "../components/sections/SocialSidebar.astro";
-import Hero from "../components/sections/Hero.astro";
-import Pricing from "../components/sections/Pricing.astro";
-import Contact from "../components/sections/Contact.astro";
+import AboutIntro from "../components/sections/AboutIntro.astro";
 import Footer from "../components/sections/Footer.astro";
 import ScrollToTop from "../components/ui/ScrollToTop.astro";
+import MeetTheTeam from "../components/sections/MeetTheTeam.astro";
+import WhatMakesUsDifferent from "../components/sections/WhatMakesUsDifferent.astro";
 ---
 
-<BaseLayout title="Home" currentPage="home">
-  <Navbar currentPage="home" />
+<BaseLayout title="Get to Know Us" currentPage="about">
+  <Navbar currentPage="about" />
   <SocialSidebar />
-  <Hero />
-  <Pricing />
-  <Contact />
+  <AboutIntro />
+  <WhatMakesUsDifferent />
+  <MeetTheTeam />
   <Footer />
   <ScrollToTop />
 

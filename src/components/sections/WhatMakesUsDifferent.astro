@@ -1,0 +1,62 @@
+---
+const features = [
+  {
+    title: "Speed First",
+    description: "Fast websites rank higher and convert better. We build with Astro to make sure yours loads in a flash.",
+    boldText: null,
+  },
+  {
+    title: "Built to Convert",
+    description: "Every page is designed with one goal: ",
+    boldText: "turning visitors into customers.",
+  },
+  {
+    title: "Smarter, Not Slower",
+    description: "We use proven systems and reusable components — so you get quality work delivered faster.",
+    boldText: null,
+  },
+  {
+    title: "You're in Control",
+    description: "Update anything on your site anytime with Sanity — no code, no stress.",
+    boldText: null,
+  },
+];
+---
+
+<section class="bg-brand-card py-16 lg:py-24">
+  <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-20">
+
+    <h2 class="font-heading text-2xl sm:text-3xl lg:text-4xl font-medium text-brand-primary mb-10 lg:mb-14">
+      What Makes Us Different?
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 lg:gap-x-24 gap-y-10">
+      {features.map((feature) => (
+        <div class="flex items-start gap-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6 text-brand-primary shrink-0 mt-1"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+          <div>
+            <h3 class="font-body text-lg lg:text-xl font-bold text-brand-primary mb-1">
+              {feature.title}
+            </h3>
+            <p class="font-body text-base lg:text-lg font-medium text-white/90 leading-relaxed">
+              {feature.description}
+              {feature.boldText && (
+                <strong class="font-bold italic text-white">{feature.boldText}</strong>
+              )}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

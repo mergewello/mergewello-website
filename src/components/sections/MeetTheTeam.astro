@@ -1,0 +1,125 @@
+---
+import edselImg from "../../assets/images/edsel.png";
+import jadeImg from "../../assets/images/jade.png";
+
+const team = [
+  {
+    name: "Edsel Pisueña",
+    role: "Technical Lead",
+    image: edselImg,
+    rotation: {
+      card: "-rotate-[6deg]",
+      photo: "-rotate-[6deg]",
+      name: "-rotate-[2deg]",
+    },
+    skills: [
+      "Web Developer",
+      "DevOps & Automation",
+      "System Architecture",
+      "Cloud Infrastructure",
+      "Web Security",
+      "Linux System Administrator",
+      "Headless CMS Specialist",
+      "Web Performance Engineer",
+      "Technical Strategy",
+    ],
+  },
+  {
+    name: "Jade Merabela Fabiaña",
+    role: "Project Manager",
+    image: jadeImg,
+    rotation: {
+      card: "rotate-[6deg]",
+      photo: "rotate-[5deg]",
+      name: "rotate-[2deg]",
+    },
+    skills: [
+      "Creative Director",
+      "UX/UI Designer",
+      "Brand Strategist",
+      "Content Strategist",
+      "SEO Specialist",
+      "Frontend Web Designer",
+      "Sales & Marketing Specialist",
+      "Social Media Manager",
+      "Graphic Designer",
+    ],
+  },
+];
+---
+
+<section class="bg-brand-dark py-16 lg:py-24 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-16">
+
+    <!-- Heading -->
+    <h2 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-semibold text-brand-primary text-center mb-16 lg:mb-20">
+      Meet Our Team
+    </h2>
+
+    <!-- Team Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-20">
+      {team.map((member) => (
+        <div class="flex flex-col items-center">
+
+          {/* Photo with rotated gradient card */}
+          <div class="relative w-64 sm:w-72 lg:w-80 h-72 sm:h-80 lg:h-96 mb-8">
+            {/* Teal gradient background card */}
+            <div
+              class:list={[
+                "absolute inset-0 bg-linear-to-l from-brand-primary to-emerald-700 rounded-3xl",
+                member.rotation.card,
+              ]}
+            />
+            {/* Photo */}
+            <img
+              src={member.image.src}
+              alt={member.name}
+              class:list={[
+                "absolute inset-0 w-full h-full object-cover object-top rounded-3xl",
+                member.rotation.photo,
+              ]}
+            />
+          </div>
+
+          {/* Name */}
+          <h3
+            class:list={[
+              "font-heading text-2xl sm:text-3xl lg:text-4xl font-medium text-brand-primary mb-2",
+              member.rotation.name,
+            ]}
+          >
+            {member.name}
+          </h3>
+
+          {/* Role */}
+          <p class="font-body text-base sm:text-lg lg:text-xl font-medium text-white mb-6">
+            {member.role}
+          </p>
+
+          {/* Skills */}
+          <ul class="space-y-2 self-start pl-4 sm:pl-8">
+            {member.skills.map((skill) => (
+              <li class="flex items-center gap-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-5 h-5 text-brand-primary shrink-0"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="font-body text-sm sm:text-base lg:text-lg font-bold text-brand-primary">
+                  {skill}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
