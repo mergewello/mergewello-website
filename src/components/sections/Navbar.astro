@@ -8,14 +8,14 @@ interface Props {
 const { currentPage = "home" } = Astro.props;
 
 const navLinks = [
-  { label: "HOME", href: "/#hero", id: "home" },
+  { label: "HOME", href: "/#", id: "home" },
   { label: "PRICING", href: "/#pricing", id: "pricing" },
   { label: "GET TO KNOW US", href: "/about", id: "about" },
 ];
 ---
 
 <!-- Mobile Top Bar (logo only) -->
-<div class="lg:hidden flex items-center px-4 py-5 bg-brand-dark">
+<div class="lg:hidden flex items-center px-4 py-3 bg-brand-dark/95 backdrop-blur-md fixed top-0 left-0 right-0 z-50">
   <a href="/" class="flex flex-col">
     <div class="font-heading text-2xl font-bold leading-tight">
       <span class="text-white">merge</span><span class="text-brand-primary">wello</span>
@@ -23,6 +23,8 @@ const navLinks = [
     <span class="text-brand-light text-[10px] font-medium font-body tracking-[0.15em]">TECHNOLOGIES</span>
   </a>
 </div>
+
+<div class="lg:hidden h-14"></div>
 
 <!-- Desktop Navbar -->
 <nav class="hidden lg:flex items-center justify-between px-10 xl:px-20 py-6 bg-brand-dark fixed top-0 left-0 right-0 z-50">
@@ -67,8 +69,9 @@ const navLinks = [
     {navLinks.map((link) => (
       <a
         href={link.href}
+        data-nav-link-mobile={link.id}
         class:list={[
-          "flex flex-col items-center gap-1 px-3 py-2 rounded-xl text-xs font-medium font-body uppercase transition-colors duration-200",
+          "flex flex-col items-center gap-1 px-3 py-2 rounded-xl text-xs font-semibold font-body uppercase transition-colors duration-200",
           currentPage === link.id ? "text-brand-primary" : "text-white/70 hover:text-white",
         ]}
       >
@@ -93,7 +96,8 @@ const navLinks = [
 
     <!-- Mobile CTA -->
     <a
-      href="#contact"
+      href="/#contact"
+      data-nav-link-mobile="contact"
       class="flex flex-col items-center gap-1 px-3 py-2 text-brand-primary"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -110,6 +114,7 @@ const navLinks = [
 <script>
   const sections = ["hero", "pricing", "contact"];
   const navLinks = document.querySelectorAll("[data-nav-link]");
+  const mobileLinks = document.querySelectorAll("[data-nav-link-mobile]");
 
   function updateActiveLink() {
     const scrollY = window.scrollY + 200;
@@ -131,8 +136,6 @@ const navLinks = [
 
     const activeId = linkMap[current] || "";
 
-    const highlightId = activeId === "contact" ? "" : activeId;
-
     // Update page title
     const titleMap: Record<string, string> = {
       home: "Home",
@@ -141,6 +144,9 @@ const navLinks = [
     };
     const pageTitle = titleMap[activeId] || "Home";
     document.title = `${pageTitle} | Mergewello Technologies`;
+
+    // Desktop nav — no highlight on contact
+    const highlightId = activeId === "contact" ? "" : activeId;
 
     navLinks.forEach((link) => {
       const linkId = link.getAttribute("data-nav-link");
@@ -154,6 +160,22 @@ const navLinks = [
         link.classList.remove("text-brand-primary");
         link.classList.add("text-white");
         underline?.classList.add("hidden");
+      }
+    });
+
+    // Mobile nav — highlight active section
+    mobileLinks.forEach((link) => {
+      const linkId = link.getAttribute("data-nav-link-mobile");
+
+      if (linkId === activeId) {
+        link.classList.add("text-brand-primary");
+        link.classList.remove("text-white/70");
+      } else if (linkId === "contact") {
+        // Quote button stays brand-primary always
+        link.classList.add("text-brand-primary");
+      } else {
+        link.classList.remove("text-brand-primary");
+        link.classList.add("text-white/70");
       }
     });
   }
