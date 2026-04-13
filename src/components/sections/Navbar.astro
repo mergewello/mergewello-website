@@ -39,15 +39,20 @@ const navLinks = [
     {navLinks.map((link) => (
       <a
         href={link.href}
+        data-nav-link={link.id}
         class:list={[
-          "relative text-base font-medium font-body uppercase tracking-wide transition-colors duration-200",
-          currentPage === link.id ? "text-brand-primary" : "text-white hover:text-brand-primary",
+          "relative text-base font-medium font-body uppercase tracking-wide transition-colors duration-200 hover:text-brand-primary",
+          currentPage === link.id ? "text-brand-primary" : "text-white",
         ]}
       >
         {link.label}
-        {currentPage === link.id && (
-          <span class="absolute -bottom-2 left-0 w-full h-0.75 bg-brand-primary rounded-full" />
-        )}
+        <span
+          data-underline
+          class:list={[
+            "absolute -bottom-2 left-0 w-full h-0.75 bg-brand-primary rounded-full transition-opacity duration-200",
+            currentPage === link.id ? "" : "hidden",
+          ]}
+        />
       </a>
     ))}
   </div>
@@ -101,3 +106,60 @@ const navLinks = [
 
 <!-- Spacer for fixed desktop nav -->
 <div class="hidden lg:block h-20"></div>
+
+<script>
+  const sections = ["hero", "pricing", "contact"];
+  const navLinks = document.querySelectorAll("[data-nav-link]");
+
+  function updateActiveLink() {
+    const scrollY = window.scrollY + 200;
+
+    let current = "";
+
+    for (const id of sections) {
+      const section = document.getElementById(id);
+      if (section && section.offsetTop <= scrollY) {
+        current = id;
+      }
+    }
+
+    const linkMap: Record<string, string> = {
+      hero: "home",
+      pricing: "pricing",
+      contact: "contact",
+    };
+
+    const activeId = linkMap[current] || "";
+
+    const highlightId = activeId === "contact" ? "" : activeId;
+
+    // Update page title
+    const titleMap: Record<string, string> = {
+      home: "Home",
+      pricing: "Pricing",
+      contact: "Contact",
+    };
+    const pageTitle = titleMap[activeId] || "Home";
+    document.title = `${pageTitle} | Mergewello Technologies`;
+
+    navLinks.forEach((link) => {
+      const linkId = link.getAttribute("data-nav-link");
+      const underline = link.querySelector("[data-underline]");
+
+      if (linkId === highlightId) {
+        link.classList.add("text-brand-primary");
+        link.classList.remove("text-white");
+        underline?.classList.remove("hidden");
+      } else {
+        link.classList.remove("text-brand-primary");
+        link.classList.add("text-white");
+        underline?.classList.add("hidden");
+      }
+    });
+  }
+
+  if (document.getElementById("hero")) {
+    window.addEventListener("scroll", updateActiveLink);
+    updateActiveLink();
+  }
+</script>
