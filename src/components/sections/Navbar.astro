@@ -142,8 +142,11 @@ const navLinks = [
       pricing: "Pricing",
       contact: "Contact",
     };
-    const pageTitle = titleMap[activeId] || "Home";
-    document.title = `${pageTitle} | Mergewello Technologies`;
+    const pageTitle = titleMap[activeId] || "";
+    document.title = pageTitle 
+    ? `${pageTitle} - Mergewello Technologies` 
+    : "Mergewello Technologies";
+    document.title = `${pageTitle} - Mergewello Technologies`;
 
     // Desktop nav — no highlight on contact
     const highlightId = activeId === "contact" ? "" : activeId;
