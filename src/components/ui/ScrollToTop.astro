@@ -77,7 +77,10 @@
 
   window.addEventListener("scroll", () => {
     if (!ticking) {
-      requestAnimationFrame(updateProgress);
+      requestAnimationFrame(() => {
+        updateProgress();
+        ticking = false;
+      });
       ticking = true;
     }
   });
