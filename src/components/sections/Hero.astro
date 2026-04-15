@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import Button from "../ui/Button.astro";
 import rocketImg from "../../assets/images/rocket.png";
 
@@ -52,11 +53,13 @@ const features = [
 
       <!-- Right Image -->
       <div class="hidden lg:flex flex-1 justify-end">
-        <img
-          src={rocketImg.src}
+        <Image
+          src={rocketImg}
           alt="Rocket launching — fast website delivery"
           class="w-64 sm:w-72 lg:w-95 xl:w-105 h-auto object-contain"
           loading="eager"
+          format="webp"
+          quality={80}
         />
       </div>
 
