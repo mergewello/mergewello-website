@@ -1,16 +1,25 @@
 ---
 import "../styles/global.css";
+import StructuredData from "../components/ui/StructuredData.astro";
+
 interface Props {
   title: string;
   description?: string;
   currentPage?: string;
+  noindex?: boolean;
 }
 
 const {
   title,
-  description = "We help local businesses in Aklan, Antique, Capiz, and Iloilo get online.",
+  description = "We build fast, modern websites for local businesses in Aklan, Antique, Capiz, and Iloilo. Affordable web design starting at ₱3,000.",
   currentPage = "",
+  noindex = false,
 } = Astro.props;
+
+const siteUrl = "https://mergewello.com";
+const currentPath = Astro.url.pathname;
+const canonicalUrl = `${siteUrl}${currentPath}`;
+const pageTitle = title ? `${title} | Mergewello Technologies` : "Mergewello Technologies";
 ---
 
 <!doctype html>
@@ -18,35 +27,60 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Core -->
+    <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <meta name="generator" content={Astro.generator} />
+    <meta name="keywords" content="web design iloilo, website developer iloilo, web developer panay, affordable website philippines, business website aklan, website design capiz, web design roxas city, website maintenance iloilo, small business website philippines, professional website western visayas" />
+    <meta name="author" content="Mergewello Technologies" />
+    <link rel="canonical" href={canonicalUrl} />
+    {noindex ? (
+      <meta name="robots" content="noindex, nofollow" />
+    ) : (
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    )}
+
+    <!-- Geo Tags (Local SEO) -->
+    <meta name="geo.region" content="PH-ILI" />
+    <meta name="geo.placename" content="Iloilo City, Philippines" />
+    <meta name="geo.position" content="10.7202;122.5621" />
+    <meta name="ICBM" content="10.7202, 122.5621" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content={`${title} | Mergewello Technologies`} />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://mergewello.com/og-image.jpg" />
-    <meta property="og:url" content={`https://mergewello.com${Astro.url.pathname}`} />
+    <meta property="og:image" content={`${siteUrl}/og-image.jpg`} />
+    <meta property="og:image:width" content="2400" />
+    <meta property="og:image:height" content="1260" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Mergewello Technologies" />
+    <meta property="og:locale" content="en_PH" />
 
     <!-- Twitter/X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={`${title} | Mergewello Technologies`} />
+    <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://mergewello.com/og-image.png" />
+    <meta name="twitter:image" content={`${siteUrl}/og-image.jpg`} />
 
+    <!-- Favicons -->
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-    <link rel="manifest" href="/site.webmanifest">
-
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet" />
-    <title>{title} - Mergewello Technologies</title>
+
+    <!-- Generator -->
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Structured Data -->
+    <StructuredData />
+
   </head>
   <body class="min-h-screen antialiased">
     <slot />

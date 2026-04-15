@@ -1,0 +1,123 @@
+---
+const businessData = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Mergewello Technologies",
+  "description": "We build fast, modern websites for local businesses in Aklan, Antique, Capiz, and Iloilo. Affordable web design and development starting at ₱3,000.",
+  "url": "https://mergewello.com",
+  "logo": "https://mergewello.com/og-image.jpg",
+  "image": "https://mergewello.com/og-image.jpg",
+  "telephone": "+639453964266",
+  "email": "contact@mergewello.com",
+  "founder": [
+    {
+      "@type": "Person",
+      "name": "Edsel Pisueña",
+      "jobTitle": "Technical Lead"
+    },
+    {
+      "@type": "Person",
+      "name": "Jade Merabela Fabiaña",
+      "jobTitle": "Project Manager"
+    }
+  ],
+  "address": [
+    {
+      "@type": "PostalAddress",
+      "addressLocality": "Iloilo City",
+      "addressRegion": "Western Visayas",
+      "addressCountry": "PH"
+    },
+    {
+      "@type": "PostalAddress",
+      "addressLocality": "Roxas City",
+      "addressRegion": "Western Visayas",
+      "addressCountry": "PH"
+    }
+  ],
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "10.7202",
+    "longitude": "122.5621"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Iloilo City" },
+    { "@type": "City", "name": "Roxas City" },
+    { "@type": "Province", "name": "Aklan" },
+    { "@type": "Province", "name": "Antique" },
+    { "@type": "Province", "name": "Capiz" },
+    { "@type": "Province", "name": "Iloilo" }
+  ],
+  "serviceType": [
+    "Web Design",
+    "Web Development",
+    "Website Maintenance",
+    "Website Migration",
+    "SEO Setup"
+  ],
+  "priceRange": "₱3,000 - ₱12,000",
+  "currenciesAccepted": "PHP",
+  "paymentAccepted": "Cash, Bank Transfer, GCash",
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "sameAs": [
+    "https://www.facebook.com/mergewellotechnologies"
+  ]
+};
+
+const websiteData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Mergewello Technologies",
+  "url": "https://mergewello.com",
+  "description": "Affordable web design and development for local businesses in Western Visayas, Philippines.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Mergewello Technologies",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://mergewello.com/og-image.jpg"
+    }
+  }
+};
+
+const offerData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Web Design and Development",
+  "provider": {
+    "@type": "ProfessionalService",
+    "name": "Mergewello Technologies"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Website Packages",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "Starter Package",
+        "description": "Static website up to 3 pages with mobile-responsive design, contact form, and SEO-friendly structure.",
+        "price": "3000",
+        "priceCurrency": "PHP"
+      },
+      {
+        "@type": "Offer",
+        "name": "Growth Package",
+        "description": "Up to 5 pages with CMS, custom design, SEO setup, free domain and hosting for 1 year.",
+        "price": "5000",
+        "priceCurrency": "PHP"
+      },
+      {
+        "@type": "Offer",
+        "name": "Full Launch Package",
+        "description": "Up to 8 pages with CMS, custom design, SEO setup, free domain and hosting for 1 year. Full ownership upon delivery.",
+        "price": "12000",
+        "priceCurrency": "PHP"
+      }
+    ]
+  }
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(businessData)} />
+<script type="application/ld+json" set:html={JSON.stringify(websiteData)} />
+<script type="application/ld+json" set:html={JSON.stringify(offerData)} />

@@ -9,7 +9,10 @@ import Footer from "../components/sections/Footer.astro";
 import ScrollToTop from "../components/ui/ScrollToTop.astro";
 ---
 
-<BaseLayout title="Home" currentPage="home">
+<BaseLayout
+  title="Affordable Web Design in Iloilo"
+  description="Mergewello Technologies builds fast, modern websites for local businesses in Iloilo, Aklan, Antique, and Capiz. Professional web design starting at ₱3,000. Mobile-ready, SEO-optimized, delivered in 5 days."
+>
   <Navbar currentPage="home" />
   <SocialSidebar />
   <Hero />
@@ -17,7 +20,5 @@ import ScrollToTop from "../components/ui/ScrollToTop.astro";
   <Contact />
   <Footer />
   <ScrollToTop />
-
-  <!-- Spacer for mobile bottom nav -->
   <div class="lg:hidden h-20"></div>
 </BaseLayout>
