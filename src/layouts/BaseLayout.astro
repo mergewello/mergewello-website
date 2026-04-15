@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import StructuredData from "../components/ui/StructuredData.astro";
+import Analytics from "../components/ui/Analytics.astro";
 
 interface Props {
   title: string;
@@ -80,6 +81,9 @@ const pageTitle = title ? `${title} - Mergewello Technologies` : "Mergewello Tec
 
     <!-- Structured Data -->
     <StructuredData />
+
+    <!-- Analytics -->
+    <Analytics />
 
   </head>
   <body class="min-h-screen antialiased">
