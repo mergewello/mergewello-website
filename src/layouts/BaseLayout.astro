@@ -74,5 +74,44 @@ const pageTitle = `${title} - Mergewello Technologies`;
   </head>
   <body class="min-h-screen antialiased">
     <slot />
+
+    <!-- Zoho SalesIQ -->
+    <script is:inline>
+      window.$zoho = window.$zoho || {};
+      $zoho.salesiq = $zoho.salesiq || {
+        ready: function () {
+          console.log("Zoho SalesIQ loaded");
+        }
+      };
+    </script>
+
+    <script
+      id="zsiqscript"
+      src="https://salesiq.zohopublic.com/widget?wc=siq5f7e6429d462c53813ebb89ea8f08d01e8be1603dcd73e3c509d8f5d6e7e44805d32b82fe8f2d4d80174157f4be793fd"
+      defer
+    ></script>
+
+    <style is:inline>
+      #zsiq_float,
+      .zsiq-float {
+        right: 20px !important;
+      }
+
+      @media (max-width: 767px) {
+        #zsiq_float,
+        .zsiq-float {
+          bottom: 90px !important;
+          right: 12px !important;
+        }
+      }
+
+      @media (min-width: 768px) {
+        #zsiq_float,
+        .zsiq-float {
+          bottom: 20px !important;
+          right: 30px !important;
+        }
+      }
+    </style>
   </body>
 </html>
