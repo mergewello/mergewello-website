@@ -4,19 +4,23 @@ import Navbar from "../components/sections/Navbar.astro";
 import SocialSidebar from "../components/sections/SocialSidebar.astro";
 import AboutIntro from "../components/sections/AboutIntro.astro";
 import WhatMakesUsDifferent from "../components/sections/WhatMakesUsDifferent.astro";
+import MeetTheTeam from "../components/sections/MeetTheTeam.astro";
 import Footer from "../components/sections/Footer.astro";
 import ScrollToTop from "../components/ui/ScrollToTop.astro";
 ---
 
 <BaseLayout
-  title="Get to Know Us - Mergewello Technologies"
-  description="Meet the team behind Mergewello Technologies. We're a web design agency based in Iloilo and Roxas City, serving local businesses across Aklan, Antique, Capiz, and Iloilo with fast, affordable websites."
+  title="Get to Know Us"
+  description="Mergewello Technologies is a web design agency based in Iloilo and Roxas City. We help local businesses across Panay Island get online with fast, affordable, professionally built websites. No jargon, no hassle."
 >
   <Navbar currentPage="about" />
   <SocialSidebar />
   <AboutIntro />
   <WhatMakesUsDifferent />
+  <MeetTheTeam />
   <Footer />
   <ScrollToTop />
+  
+  <!-- Spacer for mobile bottom nav -->
   <div class="lg:hidden h-20"></div>
 </BaseLayout>
